@@ -32,3 +32,33 @@ nav h1 {
   margin: 20px auto;
   padding: 20px;
 }
+
+.crewmate-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  margin-top: 40px;
+}
+.crewmate-card {
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+.crewmate-card .rating {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: var(--secondary);
+  color: #fff;
+  border-radius: 6px;
+  padding: 20px 0;
+  width: 40px;
+  height: 0;
+  line-height: 0px;
+  text-align: center;
+
+}

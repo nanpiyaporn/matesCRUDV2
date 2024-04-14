@@ -1,49 +1,46 @@
 import supabase from "../client"
 import { useEffect, useState } from "react"
+import Card from "../components/Card"
 
 const Home = () => {
   const [fetchError, setFetchError] = useState(null)
-  const [data, setData] = useState(null)
+  const [crewmates,setCrewmates] = useState(null)
+  
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data, error } = await supabase
-          .from("data")
-          .select("*")
+    const fetcCrewmates = async () => {
+        const {data, error } = await supabase
+          .from('crewmates')
+          .select()
 
         if (error) {
-          setFetchError(error.message)
-          setData(null)
-          console.error("error", error)
-          return
+          setFetchError('Could not fetch crewmates')
+          setCrewmates(null)
+          console.error(error)
+          
         }
-        setData(data)
-        setFetchError(null)
-      } catch (error) {
-        setFetchError(error.message)
+        if(data){
+          setCrewmates(data)
+          console.log(data)
+          setFetchError(null)
+        }
       }
-    }
-    fetchData()
-
+      fetcCrewmates()
   }, [])
 
 
   return (
     <div className="page home">
       {fetchError && <p className="fetch-error">{fetchError}</p>}
-      {data && (
-        <div className="crewmetes">
-          {data.map((crewmate) => (
-            <div key={crewmate.id} className="crewmate">
-              <h2>{crewmate.name}</h2>
-              <h2>{crewmate.title}</h2>
-              <p>{crewmate.rating}</p>
-              <p>{crewmate.color}</p>
-            </div>
+      {crewmates && (
+        <div className="crewmates">
+
+          <div className="crewmate-grid">
+            {crewmates.map(crewmate => (
+              <Card key={crewmate.id} crewmate={crewmate} />
           ))}
         </div>
-
+      </div>
       )}
     </div>
   )
