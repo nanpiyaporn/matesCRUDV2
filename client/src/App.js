@@ -6,7 +6,7 @@ import allTeamImage from './assets/img/allteam.png'; // import the image
 import Home from "./pages/Home"
 import Create from "./pages/Create"
 import Update from "./pages/Update"
-
+import Crew from "./pages/Crew"
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<Create />} />
         <Route path="/:id" element={<Update />} />
+        <Route path="/crew" element={<Crew />} />
       </Routes>
     </BrowserRouter>
   );

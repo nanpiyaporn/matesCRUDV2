@@ -10,6 +10,8 @@ const Create = () => {
   const [ color, setColor ] = useState('')
   const [ rating, setRating ] = useState('')
   const [ formError, setError ] = useState(null)
+  const [ message, setMessage ] = useState('') // Add this line
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -36,7 +38,11 @@ const Create = () => {
       setColor('')
       setRating('')
       setError(null)
-      navigate('/')
+      setMessage('Successfully created a new crewmate!') // Add this line
+      setTimeout(() => {
+        setMessage('') // Clear the message after 3 seconds
+        navigate('/')
+      }, 3000)
     }
   }
 
@@ -68,6 +74,8 @@ const Create = () => {
           />
         <button type = "submit">Create</button>
         {formError && <p className="form-error">{formError}</p>}
+        {message && <p className="form-success">{message}</p>} 
+      
 
       </form>
     </div>
