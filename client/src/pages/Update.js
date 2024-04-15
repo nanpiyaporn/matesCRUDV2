@@ -11,6 +11,31 @@ const Update = () => {
   const [ name, setName ] = useState('')
   const [ color, setColor ] = useState('')
   const [ rating, setRating ] = useState('')
+  const [ formError, setFormError ] = useState(null)
+
+  const handleSubmit = async (e) => { 
+    e.preventDefault()
+    if (!name || !title || !color || !rating) {
+      setFormError('Please fill in all fields')
+      return
+    }
+
+    const { data, error } = await supabase
+      .from('crewmates')
+      .update({ name, title, color, rating })
+      .eq('id', id)
+      
+    if (error) {
+      setFormError('An error occurred while saving the crewmate')
+      console.error(error)
+    }
+
+    if (data) {
+      console.log(data)
+      setFormError(null)
+      navigate('/')
+    }
+  }
 
   useEffect(() => {
     const fetchSmoothie = async () => {
@@ -37,7 +62,7 @@ const Update = () => {
 
   return (
     <div className="page update">
-      <form >
+      <form onSubmit={handleSubmit}>
         <label htmlFor = "name">Name</label>
         <input 
           type = "text" 
@@ -66,6 +91,7 @@ const Update = () => {
           value = {rating} onChange = {e => setRating(e.target.value)} 
           />
         <button type = "submit">Update Crewmate</button>
+        {formError && <p className="form-error">{setFormError}</p>}
       </form>
     </div>
   )

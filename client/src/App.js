@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import allTeamImage from './assets/img/allteam.png'; // import the image
+
 
 // pages
 import Home from "./pages/Home"
@@ -14,6 +16,10 @@ function App() {
         <Link to="/">Home</Link>
         <Link to="/create">Create New Crewmate</Link>
       </nav>
+      <br />
+      <div style={{ textAlign: "center" }}>
+        <img src={allTeamImage} alt="allcrewmate" style={{ display: "block", margin: "0 auto" }} /> {/* use the imported image */}
+      </div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<Create />} />

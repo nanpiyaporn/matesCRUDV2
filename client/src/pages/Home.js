@@ -6,6 +6,13 @@ const Home = () => {
   const [fetchError, setFetchError] = useState(null)
   const [crewmates,setCrewmates] = useState(null)
   
+  
+  const handleDelete = async (id) => {
+    setCrewmates(prevCrewmates =>  { 
+      return prevCrewmates.filter(crewmate => crewmate.id !== id)
+    }
+  )
+  }
 
   useEffect(() => {
     const fetcCrewmates = async () => {
@@ -37,7 +44,8 @@ const Home = () => {
 
           <div className="crewmate-grid">
             {crewmates.map(crewmate => (
-              <Card key={crewmate.id} crewmate={crewmate} />
+              <Card key ={crewmate.id}crewmate={crewmate} 
+              onDete = {handleDelete} />
           ))}
         </div>
       </div>
