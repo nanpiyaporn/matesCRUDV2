@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import supabase from '../client'
+import { useNavigate } from 'react-router-dom'
 
 const Create = () => {
 
+  const navigate = useNavigate()
   const [ title, setTitle ] = useState('')
   const [ name, setName ] = useState('')
   const [ color, setColor ] = useState('')
@@ -34,6 +36,7 @@ const Create = () => {
       setColor('')
       setRating('')
       setError(null)
+      navigate('/')
     }
   }
 

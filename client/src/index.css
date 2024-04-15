@@ -62,3 +62,33 @@ nav h1 {
   text-align: center;
 
 }
+/* forms */
+form {
+  padding:20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin: 0 auto;
+  max-width: 400px; 
+
+
+}
+form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px 0;
+  box-sizing: border-box;
+  background: #fff;
+  display: block;
+  border: 1px solid #ddd;
+}
+form button {
+  
+  padding: 10px;
+  background: var(--primary);
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Poppins";
+} 
