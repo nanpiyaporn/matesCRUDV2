@@ -21,7 +21,7 @@ The following **optional** features are implemented:
 
 - [x] A crewmate can be given a category upon creation which restricts their attributes
 - [x] The site displays summary statistics about a user's crew on their crew page 
-- [ ] The site displays a custom "success" metric about a user's crew which changes the look of the crewmate list
+- [x] The site displays a custom "success" metric about a user's crew which changes the look of the crewmate list
 
 The following **additional** features are implemented:
 
