@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import supabase from '../client'
+
 const Create = () => {
 
   const [ title, setTitle ] = useState('')
@@ -6,6 +9,33 @@ const Create = () => {
   const [ rating, setRating ] = useState('')
   const [ formError, setError ] = useState(null)
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    if (!name || !title || !color || !rating) {
+      setError('Please fill in all fields')
+      return
+    }
+
+    const { data, error } = await supabase
+      .from('crewmates')
+      .insert([
+        { name, title, color, rating }
+      ])
+
+    if (error) {
+      setError('An error occurred while saving the crewmate')
+      console.error(error)
+    }
+
+    if (data) {
+      setTitle('')
+      setName('')
+      setColor('')
+      setRating('')
+      setError(null)
+    }
+  }
 
   return (
     <div className="page create">
@@ -34,7 +64,8 @@ const Create = () => {
           id = "rating" value = {rating} onChange = {e => setRating(e.target.value)} 
           />
         <button type = "submit">Create</button>
-        
+        {formError && <p className="form-error">{formError}</p>}
+
       </form>
     </div>
   )
