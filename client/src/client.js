@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js'
 
 
 const URL = 'https://wrvhmflqmmfbywunmckm.supabase.co'
-//'https://zztckcckxbczjnjebicw.supabase.co'
+
 
 const API_KEY = process.env.REACT_APP_SUPABASE_ANON_KEY
 
