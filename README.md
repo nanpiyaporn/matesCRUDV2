@@ -31,7 +31,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![final](https://github.com/nanpiyaporn/matesCRUDV2/blob/main/client/src/assets/img/final.gif)
+![final](https://github.com/nanpiyaporn/matesCRUDV2/blob/main/client/src/assets/img/final.gif){width=50%}
 
 ## Notes
 
